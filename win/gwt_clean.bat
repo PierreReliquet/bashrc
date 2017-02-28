@@ -1,0 +1,1 @@
+for /d %a in (C:\Users\Pierrrrrrrot\AppData\Local\Temp\gwt*) do rmdir %a /s /q
