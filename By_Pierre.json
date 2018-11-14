@@ -1,0 +1,146 @@
+{
+    "version": 4,
+    "entities": [
+        {
+            "entity": {
+                "type": "Project",
+                "description": "Adding a description\n",
+                "fullProjectTag": "45fc7d22-e8fa-4cce-934b-8ea4bd951ffa",
+                "id": "27778515-03f7-4c24-9d91-46b6f4029687",
+                "lastModified": "2018-11-14T08:53:51.000+01:00",
+                "lastUpdaterId": "a9899c14-80b3-48da-899c-1480b378dad4",
+                "lastUpdaterName": "Pierre Reliquet",
+                "name": "By Pierre",
+                "tag": "6391448f-3c33-4591-87d8-f70395021233",
+                "updatedAt": "2018-11-14T07:50:40.426Z"
+            },
+            "children": [
+                {
+                    "entity": {
+                        "type": "Scenario",
+                        "id": "a78f16a1-989f-4b8b-9ea3-41b2b7a52149",
+                        "lastUpdaterId": "a9899c14-80b3-48da-899c-1480b378dad4",
+                        "lastUpdaterName": "Pierre Reliquet",
+                        "name": "Get luke",
+                        "tag": "2ff6f1bf-de2c-4797-9bdb-3675664a8dce",
+                        "updatedAt": "2018-11-14T07:50:29.134Z",
+                        "parentId": "27778515-03f7-4c24-9d91-46b6f4029687"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "autoSetLength": true
+                                },
+                                "headersType": "Form",
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "secure": true,
+                                        "name": "https",
+                                        "version": "V11"
+                                    },
+                                    "host": "swapi.co",
+                                    "path": "/api/people/"
+                                },
+                                "id": "5082eef8-2941-4caa-99a6-ee2d805db63a",
+                                "lastUpdaterId": "a9899c14-80b3-48da-899c-1480b378dad4",
+                                "lastUpdaterName": "Pierre Reliquet",
+                                "name": "Get people",
+                                "tag": "45fc7d22-e8fa-4cce-934b-8ea4bd951ffa",
+                                "updatedAt": "2018-11-14T07:48:34.904Z",
+                                "weight": "c",
+                                "headers": [],
+                                "parentId": "a78f16a1-989f-4b8b-9ea3-41b2b7a52149"
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "autoSetLength": true
+                                },
+                                "headersType": "Form",
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "secure": true,
+                                        "name": "https",
+                                        "version": "V11"
+                                    },
+                                    "host": "${getEntityById(\"5082eef8-2941-4caa-99a6-ee2d805db63a\").\"response\".\"body\".\"results\".\"0\".\"url\"}",
+                                    "path": ""
+                                },
+                                "id": "eac4a6c4-45ab-4a1d-aef2-3871dac3f8a5",
+                                "lastUpdaterId": "a9899c14-80b3-48da-899c-1480b378dad4",
+                                "lastUpdaterName": "Pierre Reliquet",
+                                "name": "Get first person",
+                                "tag": "5c909584-803d-403b-951f-013acc74d45a",
+                                "updatedAt": "2018-11-14T07:50:07.067Z",
+                                "weight": "o",
+                                "headers": [],
+                                "assertions": [
+                                    {
+                                        "comparison": "Equals",
+                                        "subject": "ResponseStatus",
+                                        "path": "code",
+                                        "value": "200"
+                                    },
+                                    {
+                                        "comparison": "Equals",
+                                        "subject": "ResponseJsonBody",
+                                        "path": "$.name",
+                                        "value": "Luke Skywalker"
+                                    }
+                                ],
+                                "parentId": "a78f16a1-989f-4b8b-9ea3-41b2b7a52149"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "environments": [
+        {
+            "type": "Context",
+            "id": "0ad3c391-355f-4dc8-a012-b1b3bfe4c80e",
+            "name": "Test",
+            "variables": [
+                {
+                    "enabled": true,
+                    "name": "url",
+                    "value": "https://client.restlet.com/api/echo"
+                }
+            ]
+        }
+    ],
+    "front-version": "2.104.1"
+}
